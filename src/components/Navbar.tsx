@@ -26,40 +26,40 @@ const Navbar = () => {
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled
-          ? "bg-background/80 backdrop-blur-md shadow-lg"
-          : "bg-transparent"
+          ? "bg-background/95 backdrop-blur-md shadow-lg"
+          : "bg-background/70 backdrop-blur-sm shadow-md"
       }`}
     >
       <div className="container mx-auto px-4 py-4">
         <div className="flex items-center justify-between">
           <div className="flex items-center space-x-2">
-            <span className="text-2xl">🤖</span>
-            <h1 className="text-xl font-bold gradient-text">Ética en IA</h1>
+            <span className="text-2xl drop-shadow-lg">🤖</span>
+            <h1 className="text-xl font-bold text-white drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)]">Ética en IA</h1>
           </div>
 
           {/* Desktop Menu */}
           <div className="hidden md:flex items-center space-x-8">
             <button
               onClick={() => scrollToSection("inicio")}
-              className="text-sm font-medium hover:text-primary transition-colors"
+              className="text-sm font-semibold text-white hover:text-primary-foreground transition-colors drop-shadow-md"
             >
               Inicio
             </button>
             <button
               onClick={() => scrollToSection("temas")}
-              className="text-sm font-medium hover:text-primary transition-colors"
+              className="text-sm font-semibold text-white hover:text-primary-foreground transition-colors drop-shadow-md"
             >
               Temas Clave
             </button>
             <button
               onClick={() => scrollToSection("casos")}
-              className="text-sm font-medium hover:text-primary transition-colors"
+              className="text-sm font-semibold text-white hover:text-primary-foreground transition-colors drop-shadow-md"
             >
               Casos de Estudio
             </button>
             <button
               onClick={() => scrollToSection("recursos")}
-              className="text-sm font-medium hover:text-primary transition-colors"
+              className="text-sm font-semibold text-white hover:text-primary-foreground transition-colors drop-shadow-md"
             >
               Recursos
             </button>
@@ -69,7 +69,7 @@ const Navbar = () => {
           <Button
             variant="ghost"
             size="icon"
-            className="md:hidden"
+            className="md:hidden text-white hover:bg-white/20"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           >
             {isMobileMenuOpen ? <X /> : <Menu />}
@@ -78,28 +78,28 @@ const Navbar = () => {
 
         {/* Mobile Menu */}
         {isMobileMenuOpen && (
-          <div className="md:hidden mt-4 pb-4 space-y-3 animate-fade-in">
+          <div className="md:hidden mt-4 pb-4 space-y-3 animate-fade-in bg-background/90 backdrop-blur-md rounded-lg p-2">
             <button
               onClick={() => scrollToSection("inicio")}
-              className="block w-full text-left py-2 px-4 rounded-lg hover:bg-muted transition-colors"
+              className="block w-full text-left py-2 px-4 rounded-lg text-white font-semibold hover:bg-white/20 transition-colors"
             >
               Inicio
             </button>
             <button
               onClick={() => scrollToSection("temas")}
-              className="block w-full text-left py-2 px-4 rounded-lg hover:bg-muted transition-colors"
+              className="block w-full text-left py-2 px-4 rounded-lg text-white font-semibold hover:bg-white/20 transition-colors"
             >
               Temas Clave
             </button>
             <button
               onClick={() => scrollToSection("casos")}
-              className="block w-full text-left py-2 px-4 rounded-lg hover:bg-muted transition-colors"
+              className="block w-full text-left py-2 px-4 rounded-lg text-white font-semibold hover:bg-white/20 transition-colors"
             >
               Casos de Estudio
             </button>
             <button
               onClick={() => scrollToSection("recursos")}
-              className="block w-full text-left py-2 px-4 rounded-lg hover:bg-muted transition-colors"
+              className="block w-full text-left py-2 px-4 rounded-lg text-white font-semibold hover:bg-white/20 transition-colors"
             >
               Recursos
             </button>
