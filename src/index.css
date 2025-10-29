@@ -125,8 +125,97 @@ All colors MUST be HSL.
   body {
     @apply bg-background text-foreground;
     font-family: 'Inter', sans-serif;
+}
+
+/* Presentation deck styles */
+@layer components {
+  .deck {
+    @apply fixed inset-0 bg-background text-foreground overflow-hidden select-none;
+    touch-action: pan-y;
   }
-  
+  .slide {
+    @apply absolute inset-0 opacity-0 pointer-events-none;
+    transform: translate3d(0, 8px, 0) scale(0.985);
+    transition: var(--transition-smooth);
+  }
+  .slide.active {
+    @apply opacity-100 pointer-events-auto;
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  .slide[data-transition='slide'] .max-w-3xl, 
+  .slide[data-transition='slide'] .max-w-4xl, 
+  .slide[data-transition='slide'] .text-center {
+    transform: translate3d(16px, 0, 0);
+    transition: var(--transition-smooth);
+  }
+  .slide.active[data-transition='slide'] .max-w-3xl,
+  .slide.active[data-transition='slide'] .max-w-4xl,
+  .slide.active[data-transition='slide'] .text-center {
+    transform: translate3d(0, 0, 0);
+  }
+  .slide[data-transition='zoom'] .max-w-3xl,
+  .slide[data-transition='zoom'] .max-w-4xl,
+  .slide[data-transition='zoom'] .text-center {
+    transform: scale(0.975);
+  }
+  .slide.active[data-transition='zoom'] .max-w-3xl,
+  .slide.active[data-transition='zoom'] .max-w-4xl,
+  .slide.active[data-transition='zoom'] .text-center {
+    transform: scale(1);
+  }
+
+  .fragment {
+    opacity: 0;
+    transform: translate3d(0, 8px, 0);
+    transition: var(--transition-smooth);
+  }
+  .fragment.visible {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+
+  .deck-progress {
+    @apply absolute left-0 right-0 bottom-0 h-1 bg-border/50;
+  }
+  .deck-progress-bar {
+    height: 100%;
+    background: var(--gradient-primary);
+    box-shadow: var(--shadow-glow);
+  }
+  .deck-counter {
+    @apply absolute top-4 right-5 text-sm font-semibold bg-card/70 backdrop-blur-md rounded-full px-3 py-1 border;
+  }
+  .deck-controls {
+    @apply absolute bottom-4 right-4 flex gap-2;
+  }
+  .deck-controls .btn {
+    @apply rounded-full px-3 py-2 text-sm font-semibold bg-gradient-to-r from-primary to-secondary text-white shadow-md hover:opacity-90 transition;
+  }
+  .deck-overview {
+    @apply fixed inset-0 bg-background/95 backdrop-blur-md p-6 overflow-auto;
+  }
+  .deck-overview .grid {
+    @apply grid gap-4 md:gap-6;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  }
+  .deck-overview .thumb {
+    @apply rounded-xl border bg-card/80 hover:bg-card transition shadow-sm text-left;
+  }
+  .deck-overview .thumb.current {
+    @apply ring-2 ring-primary;
+  }
+  .deck-overview .thumb-inner {
+    @apply p-4 h-28 flex flex-col justify-between;
+    background-image: var(--gradient-card);
+  }
+  .deck-overview .thumb-title {
+    @apply text-sm font-semibold opacity-90 line-clamp-2;
+  }
+  .deck-overview .thumb-number {
+    @apply text-xs opacity-70;
+  }
+}
+
   h1, h2, h3, h4, h5, h6 {
     font-family: 'Playfair Display', serif;
   }

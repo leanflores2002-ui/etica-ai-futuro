@@ -63,6 +63,12 @@ const Navbar = () => {
             >
               Recursos
             </button>
+            <a
+              href="/presentacion"
+              className="text-sm font-semibold text-white bg-gradient-to-r from-primary to-secondary px-4 py-2 rounded-full shadow-md hover:opacity-90 transition-opacity"
+            >
+              Presentación
+            </a>
           </div>
 
           {/* Mobile Menu Button */}
@@ -103,6 +109,12 @@ const Navbar = () => {
             >
               Recursos
             </button>
+            <a
+              href="/presentacion"
+              className="block w-full text-left py-2 px-4 rounded-lg text-white font-semibold bg-gradient-to-r from-primary to-secondary hover:opacity-90 transition-colors"
+            >
+              Presentación
+            </a>
           </div>
         )}
       </div>
