@@ -64,6 +64,27 @@ This project is built with:
 
 Simply open [Lovable](https://lovable.dev/projects/4f341422-e5e8-47e7-bb7d-d4343350d3b6) and click on Share -> Publish.
 
+## Deploy on Railway
+
+Two easy ways:
+
+- Static Site (recommended)
+  - In Railway: New Project → Deploy from GitHub → select this repo.
+  - Service type: Static Site.
+  - Build command: `npm ci && npm run build` (or just `npm run build`).
+  - Publish directory: `dist`.
+  - Add a domain in the service settings if desired.
+
+- Docker (NGINX, SPA fallback)
+  - This repo includes a `Dockerfile` and `nginx.conf` that serve the built app with client‑side routing support.
+  - In Railway: New Project → Deploy from GitHub → choose this repo (Railway auto‑detects the Dockerfile).
+  - No extra config required; port `80` is exposed by the container.
+  - Add a domain in the service settings if desired.
+
+Notes
+- No environment variables are required.
+- If client‑side routes 404 on the Static Site service, enable SPA fallback to `index.html` in the service settings, or use the Docker option which already includes the fallback.
+
 ## Can I connect a custom domain to my Lovable project?
 
 Yes, you can!
