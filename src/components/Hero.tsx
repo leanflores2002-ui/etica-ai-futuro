@@ -1,13 +1,9 @@
 import { Button } from "@/components/ui/button";
 import heroImage from "@/assets/hero-ai-ethics.jpg";
+import { useNavigate } from "react-router-dom";
 
 const Hero = () => {
-  const scrollToTemas = () => {
-    const element = document.getElementById("temas");
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth", block: "start" });
-    }
-  };
+  const navigate = useNavigate();
 
   return (
     <section
@@ -40,7 +36,7 @@ const Hero = () => {
 
           <Button
             size="lg"
-            onClick={scrollToTemas}
+            onClick={() => navigate("/temas")}
             className="bg-gradient-to-r from-primary to-secondary hover:opacity-90 transition-opacity text-lg px-8 py-6 rounded-full shadow-2xl"
           >
             🚀 Explorar Temas

@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -14,13 +15,7 @@ const Navbar = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const scrollToSection = (id: string) => {
-    const element = document.getElementById(id);
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth", block: "start" });
-      setIsMobileMenuOpen(false);
-    }
-  };
+  const closeMobile = () => setIsMobileMenuOpen(false);
 
   return (
     <nav
@@ -39,36 +34,36 @@ const Navbar = () => {
 
           {/* Desktop Menu */}
           <div className="hidden md:flex items-center space-x-8">
-            <button
-              onClick={() => scrollToSection("inicio")}
+            <Link
+              to="/"
               className="text-sm font-semibold text-primary hover:text-secondary transition-colors drop-shadow-md"
             >
               Inicio
-            </button>
-            <button
-              onClick={() => scrollToSection("temas")}
+            </Link>
+            <Link
+              to="/temas"
               className="text-sm font-semibold text-primary hover:text-secondary transition-colors drop-shadow-md"
             >
               Temas Clave
-            </button>
-            <button
-              onClick={() => scrollToSection("casos")}
+            </Link>
+            <Link
+              to="/casos"
               className="text-sm font-semibold text-primary hover:text-secondary transition-colors drop-shadow-md"
             >
               Casos de Estudio
-            </button>
-            <button
-              onClick={() => scrollToSection("recursos")}
+            </Link>
+            <Link
+              to="/recursos"
               className="text-sm font-semibold text-primary hover:text-secondary transition-colors drop-shadow-md"
             >
               Recursos
-            </button>
-            <a
-              href="/presentacion"
+            </Link>
+            <Link
+              to="/presentacion"
               className="text-sm font-semibold text-white bg-gradient-to-r from-primary to-secondary px-4 py-2 rounded-full shadow-md hover:opacity-90 transition-opacity"
             >
               Presentación
-            </a>
+            </Link>
           </div>
 
           {/* Mobile Menu Button */}
@@ -85,36 +80,41 @@ const Navbar = () => {
         {/* Mobile Menu */}
         {isMobileMenuOpen && (
           <div className="md:hidden mt-4 pb-4 space-y-3 animate-fade-in bg-background/90 backdrop-blur-md rounded-lg p-2">
-            <button
-              onClick={() => scrollToSection("inicio")}
+            <Link
+              to="/"
+              onClick={closeMobile}
               className="block w-full text-left py-2 px-4 rounded-lg text-primary font-semibold hover:bg-white/10 transition-colors"
             >
               Inicio
-            </button>
-            <button
-              onClick={() => scrollToSection("temas")}
+            </Link>
+            <Link
+              to="/temas"
+              onClick={closeMobile}
               className="block w-full text-left py-2 px-4 rounded-lg text-primary font-semibold hover:bg-white/10 transition-colors"
             >
               Temas Clave
-            </button>
-            <button
-              onClick={() => scrollToSection("casos")}
+            </Link>
+            <Link
+              to="/casos"
+              onClick={closeMobile}
               className="block w-full text-left py-2 px-4 rounded-lg text-primary font-semibold hover:bg-white/10 transition-colors"
             >
               Casos de Estudio
-            </button>
-            <button
-              onClick={() => scrollToSection("recursos")}
+            </Link>
+            <Link
+              to="/recursos"
+              onClick={closeMobile}
               className="block w-full text-left py-2 px-4 rounded-lg text-primary font-semibold hover:bg-white/10 transition-colors"
             >
               Recursos
-            </button>
-            <a
-              href="/presentacion"
+            </Link>
+            <Link
+              to="/presentacion"
+              onClick={closeMobile}
               className="block w-full text-left py-2 px-4 rounded-lg text-white font-semibold bg-gradient-to-r from-primary to-secondary hover:opacity-90 transition-colors"
             >
               Presentación
-            </a>
+            </Link>
           </div>
         )}
       </div>
